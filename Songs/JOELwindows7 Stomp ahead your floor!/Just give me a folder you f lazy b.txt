@@ -1,0 +1,2 @@
+Can you guys help me, how to add just a folder only in GitHub which that's the only commit I want to do?
+Because if I add new file and type the name "New folder/" it will be "~/New-folder" instead, so no space is allowed!
