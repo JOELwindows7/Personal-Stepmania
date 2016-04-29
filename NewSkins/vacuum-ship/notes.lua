@@ -41,17 +41,17 @@ return function(button_list, stepstype)
 	local hold_length= {
 		start_note_offset= -.5,
 		end_note_offset= .5,
-		head_pixs= 32,
-		body_pixs= 64,
-		tail_pixs= 32,
+		head_pixs= 64,
+		body_pixs= 32,
+		tail_pixs= 80,
 	}
 	
 	local roll_length= {
 		start_note_offset= -.5,
 		end_note_offset= .5,
-		head_pixs= 32,
-		body_pixs= 64,
-		tail_pixs= 32,
+		head_pixs= 64,
+		body_pixs= 32,
+		tail_pixs= 80,
 	}
 	
 	local parts_per_beat= 48
