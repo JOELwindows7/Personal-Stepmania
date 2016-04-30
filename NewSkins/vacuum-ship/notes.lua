@@ -1,4 +1,4 @@
---Well, Jousway... -JOELwindows7-
+--Well, Jousway, What have I done?... -JOELwindows7-
 local skin_name= Var("skin_name")
 return function(button_list, stepstype)
 	local rots= {Left= 90, Down= 0, Up= 180, Right= 270, UpLeft= 135, UpRight=225, Center=0}
@@ -67,6 +67,7 @@ return function(button_list, stepstype)
 			{per_beat= 16, states= {57, 58, 59, 60}}, -- 64th
 		},
 	}
+
 	--local lift_state_map= DeepCopy(tap_state_map)
 	--[[for i, quanta in ipairs(lift_state_map.quanta) do
 		--quanta.states[1]= quanta.states[1] + 4
@@ -74,6 +75,17 @@ return function(button_list, stepstype)
 			states[e]= states[e] + 4
 		end
 	end]]-- help me, how to make the script for multiple frames! -JOELwindows7
+
+	--[[local lift_quanta={}
+	for i, quantum in ipairs(tap_state_map.quanta) do
+		local statum= {}
+		for s, state in ipairs(quantum.states) do
+			statum[s]= statum + 2
+		end
+		lift_quanta[i]= {per_beat= quantum.per_beat, states= statum}
+	end
+	local lift_state_map= {parts_per_beat= parts_per_beat, quanta= lift_quanta}]]--
+
 	local lift_state_map= {
 		parts_per_beat= parts_per_beat, quanta= {
 			{per_beat= 1, states= {5, 6, 7, 8}}, -- 4th
@@ -113,14 +125,27 @@ return function(button_list, stepstype)
 	local mine_state_map= NewSkin.generic_state_map(8, {1})
 	local active_state_map= {
 		parts_per_beat= parts_per_beat, quanta= {
-			{per_beat= 1, states= {1}},
+			{per_beat= 1, states= {1, 2}}, -- 4th
+			{per_beat= 2, states= {5, 6}}, -- 8th
+			{per_beat= 3, states= {9, 10}}, -- 12th
+			{per_beat= 4, states= {13, 14}}, -- 16th
+			{per_beat= 6, states= {17, 18}}, -- 24th
+			{per_beat= 8, states= {21, 22}}, -- 32nd
+			{per_beat= 12, states= {25, 26}}, -- 48th
+			{per_beat= 16, states= {29, 30}}, -- 64th
 		},
 	}
-	local inactive_state_map= {
-		parts_per_beat= parts_per_beat, quanta= {
-			{per_beat= 1, states= {2}},
-		},
-	}
+	local inactive_quanta= {}
+	for i, quantum in ipairs(active_state_map.quanta) do
+		local states= {}
+		for s, state in ipairs(quantum.states) do
+			states[s]= state + 2
+		end
+		inactive_quanta[i]= {per_beat= quantum.per_beat, states= states}
+	end
+	local inactive_state_map= {parts_per_beat= parts_per_beat, quanta= inactive_quanta}
+
+
 	local columns= {}
 	for i, button in ipairs(button_list) do
 		local hold_tex= hold_buttons[button] .. " Hold 8x4.png"
