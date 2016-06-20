@@ -154,8 +154,6 @@ return function(button_list, stepstype)
 			width= 64,
 			anim_time= 1,
 			anim_uses_beats= true,
-			hold_gray_percent= .25,
-			use_hold_heads_for_taps_on_row= false,
 			padding= 0,
 			quantum_time= 1,
 			taps= {
